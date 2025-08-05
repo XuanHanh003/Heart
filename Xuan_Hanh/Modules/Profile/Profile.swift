@@ -11,6 +11,16 @@ class Profile: UIViewController, ButtonDelegate {
     
     @IBOutlet weak var resulView: UIStackView!
     @IBOutlet weak var editButton: Button!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var bmiLabel: UILabel!
+    @IBOutlet weak var heightLabel: UILabel!
+    @IBOutlet weak var weightLabel: UILabel!
+    @IBOutlet weak var genderLabel: UILabel!
+    private var deleteButton: UIButton?
+    
+    var user: User?
+    var onDelete: (() -> Void)?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
@@ -18,53 +28,83 @@ class Profile: UIViewController, ButtonDelegate {
         editButton.delegate = self
         resulView.layer.cornerRadius = 16
         
-        let deleteImage = UIImage(named: "Delete")
-        let deleteButton = UIBarButtonItem(
-            image: deleteImage,
-            style: .plain,
-            target: self,
-            action: #selector(deleteTapped)
-        )
-        navigationItem.rightBarButtonItem = deleteButton
+        if let user = user {
+            nameLabel.text = "\(user.firstName) \(user.lastName)"
+            
+            let heightInMeters = Double(user.height) / 100.0
+            let bmi = Double(user.weight) / (heightInMeters * heightInMeters)
+            bmiLabel.text = String(format: "%.1f", bmi)
+            
+            heightLabel.text = "\(user.height) cm"
+            weightLabel.text = "\(user.weight) kg"
+            genderLabel.text = user.gender
+         }
     }
+    
     func setupNavigationBar() {
         self.title = "Profile"
         navigationController?.navigationBar.titleTextAttributes = [
             .font: UIFont.systemFont(ofSize: 20, weight: .bold),
             .foregroundColor: UIColor.neutral1]
+        self.navigationItem.backButtonTitle = ""
+        
+        let deleteButton = UIButton(type: .system)
+        deleteButton.setImage(UIImage(named: "Delete"), for: .normal)
+        deleteButton.addTarget(self, action: #selector(deleteTapped), for: .touchUpInside)
+        deleteButton.frame = CGRect(x: 0, y: 0, width: 24, height: 24) 
+
+        let barButton = UIBarButtonItem(customView: deleteButton)
+        navigationItem.rightBarButtonItem = barButton
+
+        self.deleteButton = deleteButton
     }
+    
+    
     @objc func deleteTapped() {
         navigationItem.rightBarButtonItem?.isEnabled = false
         showAlert()
     }
+    
+    
     func showAlert() {
         let alertView = Alert()
         
-        
+        deleteButton?.isEnabled = false
+        deleteButton?.alpha = 0.3
+
         alertView.frame = view.bounds
-        alertView.backgroundColor = UIColor.black.withAlphaComponent(0.5) // làm mờ background
+        alertView.backgroundColor = UIColor.black.withAlphaComponent(0.5) 
         alertView.tag = 999
         
-        // Gán action
         alertView.cancelButton.addTarget(self, action: #selector(dismissAlert), for: .touchUpInside)
         alertView.yesButton.addTarget(self, action: #selector(confirmDelete), for: .touchUpInside)
         
         view.addSubview(alertView)
     }
+    
+    
     @objc func dismissAlert() {
-        navigationItem.rightBarButtonItem?.isEnabled = true
+        deleteButton?.isEnabled = true
+        deleteButton?.alpha = 1.0
         if let alertView = view.viewWithTag(999) {
             alertView.removeFromSuperview()
         }
     }
     
+    
     @objc func confirmDelete() {
         dismissAlert()
         
-        // Chuyển về Intro
-        let introVC = Intro(nibName: "Intro", bundle: nil)
-        navigationController?.setViewControllers([introVC], animated: true)
+        if let user = self.user {
+               UserStorage.shared.remove(user: user)
+           }
+        onDelete?()
+        
+        let userListVC = UserList(nibName: "UserList", bundle: nil)
+        navigationController?.setViewControllers([userListVC], animated: true)
     }
+    
+    
     func buttonTapped() {
         let InforVC = Information(nibName: "Information", bundle: nil)
         navigationController?.pushViewController(InforVC, animated: true)

@@ -25,8 +25,8 @@ class UserCell: UITableViewCell {
         self.backgroundColor = UIColor.clear
     }
     func configure(with user: User) {
-        userNameLabel.text = user.name
-        userStatusLabel.text = user.status
+        userNameLabel.text = "\(user.firstName) \(user.lastName)"
+        userStatusLabel.text = "W: \(user.weight)kg - H: \(user.height)cm"
         userImageView.image = UIImage(named: "Ava")
         nextImageView.image = UIImage(named: "Right Circle")
     }

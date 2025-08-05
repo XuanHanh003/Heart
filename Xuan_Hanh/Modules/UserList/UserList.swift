@@ -7,38 +7,49 @@
 
 import UIKit
 
-struct User {
-    let name: String
-    let status: String
-}
-
 class UserList: UIViewController {
+    
     @IBOutlet weak var tableView: UITableView!
-    // Dữ liệu mẫu
-        let users = [
-            User(name: "John Weak", status: "W: 86kg - H: 190cm"),
-            User(name: "John Unowned", status: "W: 86kg - H: 190cm"),
-            User(name: "John Strong", status: "W: 86kg - H: 190cm")
-        ]
-
+    private var addButton: UIButton?
+        var users: [User] = []
+    
+        override func viewWillAppear(_ animated: Bool) {
+            super.viewWillAppear(animated)
+            users = UserStorage.shared.users 
+            tableView.reloadData()
+      }
+    
         override func viewDidLoad() {
             super.viewDidLoad()
-            self.title = "List"
+           
             setupTableView()
             setupNavigationBar()
         }
     
         func setupNavigationBar() {
+            self.title = "List"
             self.navigationItem.hidesBackButton = true
             
-            // Sửa icon back của màn kế tiếp (Information)
             let backImage = UIImage(named: "Back")
             self.navigationController?.navigationBar.backIndicatorImage = backImage
             self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = backImage
-
-            // Ẩn chữ "Back" nếu muốn
             self.navigationItem.backButtonTitle = ""
+            
+            let addButton = UIButton(type: .system)
+            addButton.setImage(UIImage(named: "ic_add"), for: .normal)
+            addButton.addTarget(self, action: #selector(addTapped), for: .touchUpInside)
+            addButton.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
+            
+            let barButton = UIBarButtonItem(customView: addButton)
+            navigationItem.rightBarButtonItem = barButton
 
+            self.addButton = addButton
+
+
+    }
+    @objc func addTapped() {
+        let inforVC = Information(nibName: "Information", bundle: nil)
+        navigationController?.pushViewController(inforVC, animated: true)
     }
 
         private func setupTableView() {
@@ -46,7 +57,6 @@ class UserList: UIViewController {
             tableView.register(nib, forCellReuseIdentifier: "UserCell")
             tableView.delegate = self
             tableView.dataSource = self
-//            tableView.rowHeight = 80
             tableView.tableFooterView = UIView()
             tableView.backgroundColor = UIColor(named: "Background")
             tableView.separatorStyle = .none
@@ -56,7 +66,7 @@ class UserList: UIViewController {
   
     extension UserList: UITableViewDelegate, UITableViewDataSource {
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return users.count
+            return UserStorage.shared.users.count
         }
 
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -70,6 +80,13 @@ class UserList: UIViewController {
         
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             let profileVC = Profile(nibName: "Profile", bundle: nil)
+            let user = UserStorage.shared.users[indexPath.row]
+            profileVC.user = user
+            profileVC.onDelete = { [weak self] in
+                    self?.users.remove(at: indexPath.row)
+                    self?.tableView.deleteRows(at: [indexPath], with: .automatic)
+                }
+            
             self.navigationController?.pushViewController(profileVC, animated: true)
         }
 

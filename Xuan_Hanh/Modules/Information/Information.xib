@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Information" customModule="Xuan_Hanh" customModuleProvider="target">
             <connections>
                 <outlet property="formFirstName" destination="CDj-d6-P2A" id="6sc-gu-Yva"/>
+                <outlet property="formGender" destination="BcP-lr-Zak" id="rM8-i3-7R4"/>
                 <outlet property="formHeight" destination="Wcj-UH-s7b" id="0Vi-5i-ygD"/>
                 <outlet property="formLastName" destination="MkO-h7-xkN" id="zpY-9f-6fQ"/>
                 <outlet property="formWeight" destination="ldg-bD-0oF" id="7Kn-Su-Dlk"/>

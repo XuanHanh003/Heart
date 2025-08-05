@@ -58,6 +58,14 @@
 		0FDDB9BA2E38862B002D60E2 /* Alert.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Alert.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		0FD2508F2E41EDAF006493CC /* Models */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Models;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		0FD36E7F2E2E1DF800656D73 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
@@ -114,6 +122,7 @@
 				0FBBDB1F2E32179B004D5A9D /* App */,
 				0FD36ED02E2E32F300656D73 /* Component */,
 				0FBBDB1E2E321774004D5A9D /* Modules */,
+				0FD2508F2E41EDAF006493CC /* Models */,
 				0FD36EB92E2E32F000656D73 /* Info.plist */,
 				0FD36EC32E2E32F000656D73 /* ViewController.swift */,
 			);
@@ -209,6 +218,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				0FD2508F2E41EDAF006493CC /* Models */,
 			);
 			name = Xuan_Hanh;
 			packageProductDependencies = (

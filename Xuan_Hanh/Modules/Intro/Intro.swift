@@ -7,29 +7,30 @@
 
 import UIKit
 
-class Intro: UIViewController {
+class Intro: UIViewController, ButtonDelegate {
     @IBOutlet weak var messageLabel: UILabel!
-    
+    @IBOutlet weak var addProfileButton: Button!
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
+        
+        addProfileButton.setTitle("Add Profile")
+        addProfileButton.delegate = self
+        
         let fullText = "Empty folder, Tap “Add Profile” button to create profile now"
         let keyword = "“Add Profile”"
-           
         highlight(keyword, in: fullText, label: messageLabel, highlightColor: .primary1)
     }
     
     func setupNavigationBar() {
         self.title = "List"
         navigationController?.navigationBar.titleTextAttributes = [
-                .font: UIFont.systemFont(ofSize: 20, weight: .bold),
-                .foregroundColor: UIColor.neutral1]
-        // Sửa icon back của màn kế tiếp (Information)
+            .font: UIFont.systemFont(ofSize: 20, weight: .bold),
+            .foregroundColor: UIColor.neutral1]
+        
         let backImage = UIImage(named: "Back")
         self.navigationController?.navigationBar.backIndicatorImage = backImage
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = backImage
-
-        // Ẩn chữ "Back" nếu muốn
         self.navigationItem.backButtonTitle = ""
     }
     
@@ -40,18 +41,13 @@ class Intro: UIViewController {
         }
         label.attributedText = attributed
     }
-
-    // Dùng
-   
     
-    
-    @IBAction func addProfileTapped(_ sender: UIButton) {
-        let infoVC = Information(nibName: "Information", bundle: nil)
-        self.navigationController?.pushViewController(infoVC, animated: true)
-        }
+    func buttonTapped() {
+        let InforVC = Information(nibName: "Information", bundle: nil)
+        navigationController?.pushViewController(InforVC, animated: true)
     }
-   
     
+}
 
   
 
