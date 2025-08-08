@@ -7,7 +7,7 @@
 
 import UIKit
 
-class UserList: UIViewController {
+class UserListVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     private var addButton: UIButton?
@@ -47,14 +47,17 @@ class UserList: UIViewController {
 
 
     }
-    @objc func addTapped() {
-        let inforVC = Information(nibName: "Information", bundle: nil)
-        navigationController?.pushViewController(inforVC, animated: true)
-    }
+        @objc func addTapped() {
+            let inforVC = InformationVC(nibName: "InformationVC", bundle: nil)
+            inforVC.modalPresentationStyle = .fullScreen
+            present(inforVC, animated: true)
+        }
+
+    
 
         private func setupTableView() {
-            let nib = UINib(nibName: "UserCell", bundle: nil)
-            tableView.register(nib, forCellReuseIdentifier: "UserCell")
+            let nib = UINib(nibName: "UserCellVC", bundle: nil)
+            tableView.register(nib, forCellReuseIdentifier: "UserCellVC")
             tableView.delegate = self
             tableView.dataSource = self
             tableView.tableFooterView = UIView()
@@ -64,13 +67,13 @@ class UserList: UIViewController {
     }
 
   
-    extension UserList: UITableViewDelegate, UITableViewDataSource {
+    extension UserListVC: UITableViewDelegate, UITableViewDataSource {
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             return UserStorage.shared.users.count
         }
 
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as? UserCell else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserCellVC", for: indexPath) as? UserCellVC else {
                 return UITableViewCell()
             }
             let user = users[indexPath.row]
@@ -79,14 +82,13 @@ class UserList: UIViewController {
         }
         
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            let profileVC = Profile(nibName: "Profile", bundle: nil)
+            let profileVC = ProfileVC(nibName: "ProfileVC", bundle: nil)
             let user = UserStorage.shared.users[indexPath.row]
             profileVC.user = user
             profileVC.onDelete = { [weak self] in
                     self?.users.remove(at: indexPath.row)
                     self?.tableView.deleteRows(at: [indexPath], with: .automatic)
                 }
-            
             self.navigationController?.pushViewController(profileVC, animated: true)
         }
 

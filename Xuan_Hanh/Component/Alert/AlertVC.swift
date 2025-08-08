@@ -7,7 +7,7 @@
 
 import UIKit
 
-class Alert: UIView {
+class AlertVC: UIView {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var cancelButton: UIButton!
@@ -16,12 +16,15 @@ class Alert: UIView {
     override init(frame: CGRect) {
             super.init(frame: frame)
             loadFromNib()
+            cornerButton()
         }
 
         required init?(coder: NSCoder) {
             super.init(coder: coder)
             loadFromNib()
+         
         }
+
     func cornerButton() {
         cancelButton.layer.cornerRadius = 16
         yesButton.layer.cornerRadius = 16
@@ -29,19 +32,16 @@ class Alert: UIView {
         cancelButton.layer.borderColor = UIColor.primary1.cgColor
         cancelButton.backgroundColor = .clear
         
-        view.layer.cornerRadius = 16
+        view.layer.cornerRadius = 17
         view.clipsToBounds = true
     }
     
     private func loadFromNib() {
-          let nib = UINib(nibName: "Alert", bundle: nil)
+          let nib = UINib(nibName: "AlertVC", bundle: nil)
           guard let contentView = nib.instantiate(withOwner: self).first as? UIView else { return }
 
           contentView.frame = self.bounds
           contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
           self.addSubview(contentView)
-
-          cornerButton()
-      
     }
 }

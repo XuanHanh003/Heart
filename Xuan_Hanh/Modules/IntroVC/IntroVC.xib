@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Intro" customModule="Xuan_Hanh" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IntroVC" customModule="Xuan_Hanh" customModuleProvider="target">
             <connections>
                 <outlet property="addProfileButton" destination="CL2-LN-Z2E" id="bYW-6e-AhE"/>
                 <outlet property="messageLabel" destination="gN6-Vb-QD4" id="k1Y-5X-Dc8"/>
@@ -23,36 +23,40 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Emty-box" translatesAutoresizingMaskIntoConstraints="NO" id="ATg-lX-taw">
-                    <rect key="frame" x="132.66666666666666" y="277" width="127.99999999999997" height="128"/>
+                    <rect key="frame" x="132.66666666666666" y="253" width="127.99999999999997" height="128"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="128" id="mOX-Cf-C9j"/>
+                        <constraint firstAttribute="width" constant="128" id="7lb-NS-yNJ"/>
+                        <constraint firstAttribute="height" constant="128" id="Qws-xz-pks"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Empty folder, Tap “Add Profile” button to create profile now." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gN6-Vb-QD4">
-                    <rect key="frame" x="53" y="421" width="287" height="38.333333333333314"/>
+                    <rect key="frame" x="62" y="397" width="269" height="48"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="269" id="bMl-xx-QF1"/>
+                        <constraint firstAttribute="height" constant="48" id="e90-uS-u3I"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                    <nil key="textColor"/>
+                    <color key="textColor" name="Neutral15"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CL2-LN-Z2E" customClass="Button" customModule="Xuan_Hanh" customModuleProvider="target">
-                    <rect key="frame" x="115.66666666666669" y="479.33333333333331" width="162" height="51.999999999999943"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CL2-LN-Z2E" customClass="PrimaryButtonView" customModule="Xuan_Hanh" customModuleProvider="target">
+                    <rect key="frame" x="115.66666666666669" y="465" width="162" height="52"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="162" id="9Pz-cQ-FqP"/>
-                        <constraint firstAttribute="height" constant="52" id="oLL-IA-e2n"/>
+                        <constraint firstAttribute="width" constant="162" id="Xrh-zv-ktb"/>
+                        <constraint firstAttribute="height" constant="52" id="aKh-cN-g6h"/>
                     </constraints>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" name="Background"/>
             <constraints>
-                <constraint firstItem="ATg-lX-taw" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="218" id="5GH-46-Rxw"/>
-                <constraint firstItem="gN6-Vb-QD4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="53" id="9F6-kZ-ix8"/>
-                <constraint firstItem="CL2-LN-Z2E" firstAttribute="top" secondItem="gN6-Vb-QD4" secondAttribute="bottom" constant="20" id="H1C-30-Ma0"/>
-                <constraint firstItem="gN6-Vb-QD4" firstAttribute="top" secondItem="ATg-lX-taw" secondAttribute="bottom" constant="16" id="PwJ-cR-hmi"/>
-                <constraint firstItem="ATg-lX-taw" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ZWb-LF-grS"/>
-                <constraint firstAttribute="trailing" secondItem="gN6-Vb-QD4" secondAttribute="trailing" constant="53" id="j4a-1d-ksO"/>
-                <constraint firstItem="CL2-LN-Z2E" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="yZ0-q2-JT8"/>
+                <constraint firstItem="ATg-lX-taw" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="194" id="1By-ev-RDf"/>
+                <constraint firstItem="CL2-LN-Z2E" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="As8-Mk-Cnx"/>
+                <constraint firstItem="CL2-LN-Z2E" firstAttribute="top" secondItem="gN6-Vb-QD4" secondAttribute="bottom" constant="20" id="Lrv-Vr-nPV"/>
+                <constraint firstItem="gN6-Vb-QD4" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="RBw-5K-Eia"/>
+                <constraint firstItem="gN6-Vb-QD4" firstAttribute="top" secondItem="ATg-lX-taw" secondAttribute="bottom" constant="16" id="Vmj-PN-V95"/>
+                <constraint firstItem="ATg-lX-taw" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="qm5-ho-EZA"/>
             </constraints>
             <point key="canvasLocation" x="113.74045801526717" y="-11.267605633802818"/>
         </view>
@@ -61,6 +65,9 @@
         <image name="Emty-box" width="128" height="128"/>
         <namedColor name="Background">
             <color red="0.96078431372549022" green="0.96078431372549022" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Neutral15">
+            <color red="0.34901960784313724" green="0.38039215686274508" blue="0.47843137254901963" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

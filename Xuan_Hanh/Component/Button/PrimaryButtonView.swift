@@ -13,7 +13,7 @@ protocol ButtonDelegate: AnyObject {
     func buttonTapped()
 }
 
-class Button: UIView {
+class PrimaryButtonView: UIView {
     @IBOutlet weak var button: UIButton!
     weak var delegate: ButtonDelegate?
 
@@ -30,13 +30,13 @@ class Button: UIView {
     func setTitle(_ title: String) {
         button.setTitle(title, for: .normal)
     }
-
+    
     @IBAction func didTapButton(_ sender: UIButton) {
         delegate?.buttonTapped()
     }
 
     private func loadFromNib() {
-        let nib = UINib(nibName: "Button", bundle: nil)
+        let nib = UINib(nibName: "PrimaryButtonView", bundle: nil)
         let nibView = nib.instantiate(withOwner: self).first as! UIView
        
         addSubview(nibView)

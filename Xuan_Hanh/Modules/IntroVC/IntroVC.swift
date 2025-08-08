@@ -7,9 +7,9 @@
 
 import UIKit
 
-class Intro: UIViewController, ButtonDelegate {
+class IntroVC: UIViewController {
     @IBOutlet weak var messageLabel: UILabel!
-    @IBOutlet weak var addProfileButton: Button!
+    @IBOutlet weak var addProfileButton: PrimaryButtonView!
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
@@ -41,13 +41,15 @@ class Intro: UIViewController, ButtonDelegate {
         }
         label.attributedText = attributed
     }
-    
-    func buttonTapped() {
-        let InforVC = Information(nibName: "Information", bundle: nil)
-        navigationController?.pushViewController(InforVC, animated: true)
-    }
-    
 }
 
-  
 
+
+
+
+extension IntroVC: ButtonDelegate {
+    func buttonTapped() {
+        let InforVC = InformationVC(nibName: "InformationVC", bundle: nil)
+        navigationController?.pushViewController(InforVC, animated: true)
+    }
+}

@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Information" customModule="Xuan_Hanh" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InformationVC" customModule="Xuan_Hanh" customModuleProvider="target">
             <connections>
                 <outlet property="formFirstName" destination="CDj-d6-P2A" id="6sc-gu-Yva"/>
                 <outlet property="formGender" destination="BcP-lr-Zak" id="rM8-i3-7R4"/>
@@ -32,14 +32,14 @@
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="PZf-bO-djm">
                             <rect key="frame" x="0.0" y="0.0" width="361" height="88"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CDj-d6-P2A" customClass="Input" customModule="Xuan_Hanh" customModuleProvider="target">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CDj-d6-P2A" customClass="InputVC" customModule="Xuan_Hanh" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="174.66666666666666" height="88"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="88" id="RJ5-77-S0c"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MkO-h7-xkN" customClass="Input" customModule="Xuan_Hanh" customModuleProvider="target">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MkO-h7-xkN" customClass="InputVC" customModule="Xuan_Hanh" customModuleProvider="target">
                                     <rect key="frame" x="186.66666666666663" y="0.0" width="174.33333333333337" height="88"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
@@ -57,7 +57,7 @@
                                         <constraint firstAttribute="height" constant="24" id="jgd-yf-nPD"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                    <nil key="textColor"/>
+                                    <color key="textColor" name="Neutral15"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="BcP-lr-Zak">
@@ -75,14 +75,14 @@
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="QVC-Wf-Wx8">
                             <rect key="frame" x="0.0" y="198" width="361" height="88"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ldg-bD-0oF" customClass="Input" customModule="Xuan_Hanh" customModuleProvider="target">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ldg-bD-0oF" customClass="InputVC" customModule="Xuan_Hanh" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="174.66666666666666" height="88"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="88" id="6Be-as-C1w"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wcj-UH-s7b" customClass="Input" customModule="Xuan_Hanh" customModuleProvider="target">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wcj-UH-s7b" customClass="InputVC" customModule="Xuan_Hanh" customModuleProvider="target">
                                     <rect key="frame" x="186.66666666666663" y="0.0" width="174.33333333333337" height="88"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
@@ -93,7 +93,7 @@
                         </stackView>
                     </subviews>
                 </stackView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pvq-aN-P6k" customClass="Button" customModule="Xuan_Hanh" customModuleProvider="target">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pvq-aN-P6k" customClass="PrimaryButtonView" customModule="Xuan_Hanh" customModuleProvider="target">
                     <rect key="frame" x="16" y="727" width="361" height="56"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
@@ -117,6 +117,9 @@
     <resources>
         <namedColor name="Background">
             <color red="0.96078431372549022" green="0.96078431372549022" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Neutral15">
+            <color red="0.34901960784313724" green="0.38039215686274508" blue="0.47843137254901963" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

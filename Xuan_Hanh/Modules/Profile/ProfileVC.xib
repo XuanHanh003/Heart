@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Profile" customModule="Xuan_Hanh" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileVC" customModule="Xuan_Hanh" customModuleProvider="target">
             <connections>
                 <outlet property="bmiLabel" destination="p7j-Uu-vI0" id="Rgo-Cb-RMi"/>
                 <outlet property="editButton" destination="RQt-So-LCf" id="gkd-03-FnZ"/>
@@ -36,7 +36,7 @@
                     <color key="textColor" name="Neutral15"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RQt-So-LCf" customClass="Button" customModule="Xuan_Hanh" customModuleProvider="target">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RQt-So-LCf" customClass="PrimaryButtonView" customModule="Xuan_Hanh" customModuleProvider="target">
                     <rect key="frame" x="25" y="700" width="343" height="56"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
@@ -150,6 +150,7 @@
                         <constraint firstAttribute="height" constant="194" id="5fb-Su-QMP"/>
                         <constraint firstItem="z4S-W2-yto" firstAttribute="leading" secondItem="lfr-sN-qS8" secondAttribute="leading" constant="16" id="5mC-RC-y13"/>
                         <constraint firstAttribute="trailing" secondItem="z4S-W2-yto" secondAttribute="trailing" constant="16" id="GXV-lX-tjM"/>
+                        <constraint firstAttribute="width" constant="312" id="cFe-bM-9dk"/>
                     </constraints>
                     <edgeInsets key="layoutMargins" top="16" left="16" bottom="16" right="16"/>
                 </stackView>

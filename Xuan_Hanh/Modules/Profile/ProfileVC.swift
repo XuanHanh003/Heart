@@ -7,10 +7,10 @@
 
 import UIKit
 
-class Profile: UIViewController, ButtonDelegate {
+class ProfileVC: UIViewController {
     
     @IBOutlet weak var resulView: UIStackView!
-    @IBOutlet weak var editButton: Button!
+    @IBOutlet weak var editButton: PrimaryButtonView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var bmiLabel: UILabel!
     @IBOutlet weak var heightLabel: UILabel!
@@ -67,7 +67,7 @@ class Profile: UIViewController, ButtonDelegate {
     
     
     func showAlert() {
-        let alertView = Alert()
+        let alertView = AlertVC()
         
         deleteButton?.isEnabled = false
         deleteButton?.alpha = 0.3
@@ -99,17 +99,14 @@ class Profile: UIViewController, ButtonDelegate {
                UserStorage.shared.remove(user: user)
            }
         onDelete?()
-        
-        let userListVC = UserList(nibName: "UserList", bundle: nil)
-        navigationController?.setViewControllers([userListVC], animated: true)
+        navigationController?.popViewController(animated: true)
     }
-    
-    
+}
+
+extension ProfileVC: ButtonDelegate {
     func buttonTapped() {
-        let InforVC = Information(nibName: "Information", bundle: nil)
+        let InforVC = InformationVC(nibName: "InformationVC", bundle: nil)
         navigationController?.pushViewController(InforVC, animated: true)
-        
     }
-    
 }
     

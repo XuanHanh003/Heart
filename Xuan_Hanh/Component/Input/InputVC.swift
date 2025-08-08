@@ -7,7 +7,7 @@
 
 import UIKit
 
-class Input: UIView {
+class InputVC: UIView {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var textField: UITextField!
     
@@ -21,18 +21,19 @@ class Input: UIView {
          loadFromNib()
          cornerTextField()
      }
-     
+    
      override func layoutSubviews() {
-         
      }
+    
     func cornerTextField() {
         textField.layer.cornerRadius = 16
         textField.layer.borderWidth = 1
         textField.layer.borderColor = UIColor.neutral4.cgColor
         textField.clipsToBounds = true
     }
+    
      private func loadFromNib() {
-         let nib = UINib(nibName: "Input", bundle: nil)
+         let nib = UINib(nibName: "InputVC", bundle: nil)
          let nibView = nib.instantiate(withOwner: self).first as! UIView
 
          addSubview(nibView)
