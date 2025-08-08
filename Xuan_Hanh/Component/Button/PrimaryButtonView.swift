@@ -16,7 +16,15 @@ protocol ButtonDelegate: AnyObject {
 class PrimaryButtonView: UIView {
     @IBOutlet weak var button: UIButton!
     weak var delegate: ButtonDelegate?
-
+    
+    var isEnabled: Bool {
+            get { button.isEnabled }
+            set {
+                button.isEnabled = newValue
+                button.backgroundColor = newValue ? UIColor.primary1 : UIColor.neutral3
+            }
+        }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         loadFromNib()
@@ -48,6 +56,10 @@ class PrimaryButtonView: UIView {
             nibView.leadingAnchor.constraint(equalTo: leadingAnchor),
             nibView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
-        nibView.layer.cornerRadius = 16
+    
+        button.layer.cornerRadius = 16
+        button.clipsToBounds = true
+        isEnabled = true
+
     }
 }

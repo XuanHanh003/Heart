@@ -80,7 +80,7 @@
 		0FBBDB1E2E321774004D5A9D /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				0FDDB9B02E387EBC002D60E2 /* IntroVC */,
+				0FDDB9B02E387EBC002D60E2 /* Intro */,
 				0FDDB9B12E387EC9002D60E2 /* InformationVC */,
 				0FDDB9B22E387EE5002D60E2 /* UserList */,
 				0FDDB9B32E387F02002D60E2 /* Profile */,
@@ -139,13 +139,13 @@
 			path = Component;
 			sourceTree = "<group>";
 		};
-		0FDDB9B02E387EBC002D60E2 /* IntroVC */ = {
+		0FDDB9B02E387EBC002D60E2 /* Intro */ = {
 			isa = PBXGroup;
 			children = (
 				0FD36EBC2E2E32F000656D73 /* IntroVC.swift */,
 				0FD36EBD2E2E32F000656D73 /* IntroVC.xib */,
 			);
-			path = IntroVC;
+			path = Intro;
 			sourceTree = "<group>";
 		};
 		0FDDB9B12E387EC9002D60E2 /* InformationVC */ = {

@@ -18,6 +18,7 @@ class ProfileVC: UIViewController {
     @IBOutlet weak var genderLabel: UILabel!
     private var deleteButton: UIButton?
     
+    var editingIndex: Int?
     var user: User?
     var onDelete: (() -> Void)?
 
@@ -105,8 +106,14 @@ class ProfileVC: UIViewController {
 
 extension ProfileVC: ButtonDelegate {
     func buttonTapped() {
-        let InforVC = InformationVC(nibName: "InformationVC", bundle: nil)
-        navigationController?.pushViewController(InforVC, animated: true)
+        
+         let InforVC = InformationVC(nibName: "InformationVC", bundle: nil)
+            
+            InforVC.user = self.user
+            InforVC.isEditMode = true
+            InforVC.editingIndex = self.editingIndex
+            navigationController?.pushViewController(InforVC, animated: true)
+        }
     }
-}
     
+

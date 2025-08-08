@@ -23,11 +23,19 @@ class InformationVC: UIViewController {
     @IBOutlet weak var formHeight: InputVC!
     @IBOutlet weak var saveButton: PrimaryButtonView!
     @IBOutlet weak var formGender: UISegmentedControl!
+    
+    var isEditMode = false
+    var editingIndex: Int?
+    var user: User?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
         saveButton.delegate = self
         informationForm()
+        fillDataEdit()
+        changeForm()
+        validateForm()
     }
     
     func setupNavigationBar() {
@@ -46,9 +54,64 @@ class InformationVC: UIViewController {
         formLastName.textField.placeholder = "Enter your last name"
         formWeight.textField.placeholder = "Kg"
         formHeight.textField.placeholder = "Cm"
-        saveButton.setTitle("Save")
+        
+        if !isEditMode {
+            saveButton.setTitle("Save")
+        }
+       
         
     }
+    
+    private func changeForm() {
+        formFirstName.textField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
+        formLastName.textField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
+        formWeight.textField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
+        formHeight.textField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
+        formGender.addTarget(self, action: #selector(textFieldChanged), for: .valueChanged)
+    }
+
+    @objc private func textFieldChanged() {
+        validateForm()
+    }
+    
+    private func validateForm() {
+        let firstName = formFirstName.textField.text ?? ""
+        let lastName = formLastName.textField.text ?? ""
+        let weightText = formWeight.textField.text ?? ""
+        let heightText = formHeight.textField.text ?? ""
+        
+        let isAllFilled = !firstName.isEmpty && !lastName.isEmpty && !weightText.isEmpty && !heightText.isEmpty
+        
+        if isEditMode {
+            if let user = user {
+                let gender = formGender.titleForSegment(at: formGender.selectedSegmentIndex) ?? "Unknown"
+                let height = Int(heightText) ?? 0
+                let weight = Int(weightText) ?? 0
+                
+                let isChanged = firstName != user.firstName ||
+                                lastName != user.lastName ||
+                                gender != user.gender ||
+                                height != user.height ||
+                                weight != user.weight
+                
+                saveButton.isEnabled = isAllFilled && isChanged
+            }
+        } else {
+            saveButton.isEnabled = isAllFilled
+        }
+    }
+
+    
+    private func fillDataEdit() {
+            if isEditMode, let user = user {
+                formFirstName.textField.text = user.firstName
+                formLastName.textField.text = user.lastName
+                formWeight.textField.text = "\(user.weight)"
+                formHeight.textField.text = "\(user.height)"
+                formGender.selectedSegmentIndex = (user.gender == "Male" ? 0 : 1)
+                saveButton.setTitle("Update")
+            }
+        }
 }
 
 
@@ -67,9 +130,18 @@ extension InformationVC: ButtonDelegate {
         let weight = Int(formWeight.textField.text ?? "0") ?? 0
 
         let newUser = User(firstName: firstName, lastName: lastName, gender: gender, height: height, weight: weight)
-        UserStorage.shared.users.append(newUser)
         
-        let userListVC = UserListVC(nibName: "UserListVC", bundle: nil)
-        navigationController?.pushViewController(userListVC, animated: true)
-        }
+        if isEditMode, let index = editingIndex {
+            UserStorage.shared.users[index] = newUser
+                    
+                    if let listVC = navigationController?.viewControllers.first(where: { $0 is UserListVC }) {
+                        navigationController?.popToViewController(listVC, animated: true)
+                    }
+                } else {
+                    UserStorage.shared.users.append(newUser)
+                    
+                    let userListVC = UserListVC(nibName: "UserListVC", bundle: nil)
+                    navigationController?.pushViewController(userListVC, animated: true)
+                }
+            }        
 }

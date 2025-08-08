@@ -48,9 +48,8 @@ class UserListVC: UIViewController {
 
     }
         @objc func addTapped() {
-            let inforVC = InformationVC(nibName: "InformationVC", bundle: nil)
-            inforVC.modalPresentationStyle = .fullScreen
-            present(inforVC, animated: true)
+            let InforVC = InformationVC(nibName: "InformationVC", bundle: nil)
+            navigationController?.pushViewController(InforVC, animated: true)
         }
 
     
@@ -85,6 +84,7 @@ class UserListVC: UIViewController {
             let profileVC = ProfileVC(nibName: "ProfileVC", bundle: nil)
             let user = UserStorage.shared.users[indexPath.row]
             profileVC.user = user
+            profileVC.editingIndex = indexPath.row
             profileVC.onDelete = { [weak self] in
                     self?.users.remove(at: indexPath.row)
                     self?.tableView.deleteRows(at: [indexPath], with: .automatic)
