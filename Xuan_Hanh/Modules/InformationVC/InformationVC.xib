@@ -94,7 +94,7 @@
                     </subviews>
                 </stackView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pvq-aN-P6k" customClass="PrimaryButtonView" customModule="Xuan_Hanh" customModuleProvider="target">
-                    <rect key="frame" x="16" y="727" width="361" height="56"/>
+                    <rect key="frame" x="16" y="725" width="361" height="56"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="56" id="Cc8-Rr-eG7"/>
@@ -106,10 +106,10 @@
             <constraints>
                 <constraint firstItem="FdZ-Xr-vqs" firstAttribute="leading" secondItem="6Sd-zd-U30" secondAttribute="leading" constant="16" id="0nb-Wh-x4q"/>
                 <constraint firstItem="FdZ-Xr-vqs" firstAttribute="top" secondItem="6Sd-zd-U30" secondAttribute="top" constant="32" id="2OX-dD-Fxi"/>
-                <constraint firstItem="Pvq-aN-P6k" firstAttribute="top" secondItem="FdZ-Xr-vqs" secondAttribute="bottom" constant="350" id="6ni-1y-63X"/>
                 <constraint firstItem="Pvq-aN-P6k" firstAttribute="leading" secondItem="6Sd-zd-U30" secondAttribute="leading" constant="16" id="8ig-oE-dap"/>
                 <constraint firstItem="6Sd-zd-U30" firstAttribute="trailing" secondItem="Pvq-aN-P6k" secondAttribute="trailing" constant="16" id="dxp-FQ-WO3"/>
                 <constraint firstItem="FdZ-Xr-vqs" firstAttribute="centerX" secondItem="6Sd-zd-U30" secondAttribute="centerX" id="t4T-Eq-Mxo"/>
+                <constraint firstItem="6Sd-zd-U30" firstAttribute="bottom" secondItem="Pvq-aN-P6k" secondAttribute="bottom" constant="37" id="ttc-HL-xhY"/>
             </constraints>
             <point key="canvasLocation" x="-579.38931297709917" y="-260.56338028169017"/>
         </view>

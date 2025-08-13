@@ -49,7 +49,16 @@ class UserListVC: UIViewController {
     }
         @objc func addTapped() {
             let InforVC = InformationVC(nibName: "InformationVC", bundle: nil)
-            navigationController?.pushViewController(InforVC, animated: true)
+            let backImage = UIImage(named: "Back")?.withRenderingMode(.alwaysOriginal)
+               InforVC.navigationItem.leftBarButtonItem = UIBarButtonItem(
+                   image: backImage,
+                   style: .plain,
+                   target: InforVC,
+                   action: #selector(InformationVC.closeTapped)
+               )
+            let nav  = UINavigationController(rootViewController: InforVC)
+            nav.modalPresentationStyle = .fullScreen
+            present(nav, animated: true)
         }
 
     

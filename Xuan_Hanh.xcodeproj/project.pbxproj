@@ -29,6 +29,7 @@
 		0FD36ED42E2E333600656D73 /* PrimaryButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FD36ED32E2E333600656D73 /* PrimaryButtonView.xib */; };
 		0FDDB9B82E38860A002D60E2 /* AlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDDB9B72E38860A002D60E2 /* AlertVC.swift */; };
 		0FDDB9BB2E38862B002D60E2 /* AlertVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FDDB9BA2E38862B002D60E2 /* AlertVC.xib */; };
+		6863A3CA644D0C330FCFD294 /* Pods_Xuan_Hanh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C449AD6D271C64A107299F2 /* Pods_Xuan_Hanh.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,9 @@
 		0FD36ED32E2E333600656D73 /* PrimaryButtonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrimaryButtonView.xib; sourceTree = "<group>"; };
 		0FDDB9B72E38860A002D60E2 /* AlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertVC.swift; sourceTree = "<group>"; };
 		0FDDB9BA2E38862B002D60E2 /* AlertVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertVC.xib; sourceTree = "<group>"; };
+		2C449AD6D271C64A107299F2 /* Pods_Xuan_Hanh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Xuan_Hanh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		73E662352DF619FF7E7024BB /* Pods-Xuan_Hanh.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Xuan_Hanh.debug.xcconfig"; path = "Target Support Files/Pods-Xuan_Hanh/Pods-Xuan_Hanh.debug.xcconfig"; sourceTree = "<group>"; };
+		B5B0EB6C118E1C611A24793F /* Pods-Xuan_Hanh.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Xuan_Hanh.release.xcconfig"; path = "Target Support Files/Pods-Xuan_Hanh/Pods-Xuan_Hanh.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -71,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6863A3CA644D0C330FCFD294 /* Pods_Xuan_Hanh.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +107,8 @@
 			children = (
 				0FD36EC42E2E32F000656D73 /* Xuan_Hanh */,
 				0FD36E832E2E1DF800656D73 /* Products */,
+				FF53C30ADE4B9A4E1470EBE8 /* Pods */,
+				1B3A6100C089EBEBC2D28D7E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -204,6 +211,23 @@
 			path = Alert;
 			sourceTree = "<group>";
 		};
+		1B3A6100C089EBEBC2D28D7E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2C449AD6D271C64A107299F2 /* Pods_Xuan_Hanh.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FF53C30ADE4B9A4E1470EBE8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				73E662352DF619FF7E7024BB /* Pods-Xuan_Hanh.debug.xcconfig */,
+				B5B0EB6C118E1C611A24793F /* Pods-Xuan_Hanh.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -211,9 +235,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0FD36E952E2E1DF900656D73 /* Build configuration list for PBXNativeTarget "Xuan_Hanh" */;
 			buildPhases = (
+				4BABB4F0BD2957D2E4ACA5C1 /* [CP] Check Pods Manifest.lock */,
 				0FD36E7E2E2E1DF800656D73 /* Sources */,
 				0FD36E7F2E2E1DF800656D73 /* Frameworks */,
 				0FD36E802E2E1DF800656D73 /* Resources */,
+				8C2A2E31437AA273306818AA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -223,8 +249,6 @@
 				0FD2508F2E41EDAF006493CC /* Models */,
 			);
 			name = Xuan_Hanh;
-			packageProductDependencies = (
-			);
 			productName = Xuan_Hanh;
 			productReference = 0FD36E822E2E1DF800656D73 /* Xuan_Hanh.app */;
 			productType = "com.apple.product-type.application";
@@ -284,6 +308,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4BABB4F0BD2957D2E4ACA5C1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Xuan_Hanh-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8C2A2E31437AA273306818AA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Xuan_Hanh/Pods-Xuan_Hanh-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Xuan_Hanh/Pods-Xuan_Hanh-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Xuan_Hanh/Pods-Xuan_Hanh-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0FD36E7E2E2E1DF800656D73 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -327,6 +393,7 @@
 /* Begin XCBuildConfiguration section */
 		0FD36E962E2E1DF900656D73 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 73E662352DF619FF7E7024BB /* Pods-Xuan_Hanh.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -356,6 +423,7 @@
 		};
 		0FD36E972E2E1DF900656D73 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B5B0EB6C118E1C611A24793F /* Pods-Xuan_Hanh.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -420,7 +488,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -483,7 +551,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

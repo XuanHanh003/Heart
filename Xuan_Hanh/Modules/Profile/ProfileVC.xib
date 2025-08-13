@@ -37,7 +37,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RQt-So-LCf" customClass="PrimaryButtonView" customModule="Xuan_Hanh" customModuleProvider="target">
-                    <rect key="frame" x="25" y="700" width="343" height="56"/>
+                    <rect key="frame" x="25" y="725" width="343" height="56"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="56" id="hhm-gb-7TH"/>
@@ -67,7 +67,7 @@
                                 <constraint firstAttribute="height" constant="0.5" id="KPu-h0-Gtg"/>
                             </constraints>
                         </view>
-                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="19.670000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="juR-j4-jDi">
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="juR-j4-jDi">
                             <rect key="frame" x="16" y="129" width="280" height="49"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="hxh-WW-X2p">
@@ -88,7 +88,7 @@
                                     </subviews>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" id="nk0-DQ-aY1">
-                                    <rect key="frame" x="72" y="0.0" width="67.666666666666686" height="49"/>
+                                    <rect key="frame" x="72.333333333333314" y="0.0" width="67.666666666666686" height="49"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="180 cm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dyo-EN-tOh">
@@ -106,7 +106,7 @@
                                     </subviews>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" id="EOO-MJ-199">
-                                    <rect key="frame" x="172.66666666666666" y="0.0" width="26" height="49"/>
+                                    <rect key="frame" x="173.33333333333334" y="0.0" width="26" height="49"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="28" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0zm-qs-w0l">
@@ -158,8 +158,8 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" name="Background"/>
             <constraints>
-                <constraint firstItem="RQt-So-LCf" firstAttribute="top" secondItem="lfr-sN-qS8" secondAttribute="bottom" constant="212" id="Cyd-zp-CiZ"/>
                 <constraint firstItem="lfr-sN-qS8" firstAttribute="top" secondItem="6jD-dN-hMC" secondAttribute="bottom" constant="28" id="awr-6u-y8V"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="RQt-So-LCf" secondAttribute="bottom" constant="37" id="bRD-Ao-46w"/>
                 <constraint firstItem="kRu-7C-DaG" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="caq-wy-68W"/>
                 <constraint firstItem="lfr-sN-qS8" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="fcN-Cl-l78"/>
                 <constraint firstItem="6jD-dN-hMC" firstAttribute="top" secondItem="kRu-7C-DaG" secondAttribute="bottom" constant="24" id="kSN-Cf-O5I"/>

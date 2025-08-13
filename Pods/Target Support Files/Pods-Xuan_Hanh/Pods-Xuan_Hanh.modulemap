@@ -1,0 +1,6 @@
+framework module Pods_Xuan_Hanh {
+  umbrella header "Pods-Xuan_Hanh-umbrella.h"
+
+  export *
+  module * { export * }
+}
