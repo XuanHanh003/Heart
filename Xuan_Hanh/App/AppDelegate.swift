@@ -6,18 +6,42 @@
 //
 
 import UIKit
+import RealmSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        return true
-    }
+    func application(_ application: UIApplication,
+                         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
+            // 1) Cấu hình default Realm
+            let config = Realm.Configuration(
+                schemaVersion: 3, // tăng lên 2,3... khi đổi model
+                migrationBlock: { migration, oldSchemaVersion in
+                    if oldSchemaVersion < 1 {
+                 
+                    }
+                }
+            )
+            Realm.Configuration.defaultConfiguration = config
+
+            // 2) Khởi tạo để đảm bảo Realm sẵn sàng (và bắt lỗi nếu có)
+            do {
+                _ = try Realm()
+                #if DEBUG
+                print("Realm file:", Realm.Configuration.defaultConfiguration.fileURL?.path ?? "nil")
+                #endif
+            } catch {
+                print("Realm init error:", error)
+            }
+
+            return true
+        }
     // MARK: UISceneSession Lifecycle
+    
+    
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         // Called when a new scene session is being created.

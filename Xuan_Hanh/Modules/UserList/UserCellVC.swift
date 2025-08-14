@@ -18,13 +18,17 @@ class UserCellVC: UITableViewCell {
         setupContainerView()
      
     }
+    
+    
     func setupContainerView() {
         containerView.layer.cornerRadius = 16
         containerView.layer.masksToBounds = true
         containerView.backgroundColor = UIColor.neutral5
         self.backgroundColor = UIColor.clear
     }
-    func configure(with user: User) {
+    
+    
+    func configure(with user: UserObject) {
         userNameLabel.text = "\(user.firstName) \(user.lastName)"
         userStatusLabel.text = "W: \(user.weight)kg - H: \(user.height)cm"
         userImageView.image = UIImage(named: "Ava")

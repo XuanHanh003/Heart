@@ -6,17 +6,20 @@
 //
 
 import UIKit
+import RealmSwift
 
 class UserListVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    
+    private var users: Results<UserObject>!
+    private var token: NotificationToken?
+    
     private var addButton: UIButton?
-        var users: [User] = []
+      
     
         override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
-            users = UserStorage.shared.users 
-            tableView.reloadData()
       }
     
         override func viewDidLoad() {
@@ -24,7 +27,30 @@ class UserListVC: UIViewController {
            
             setupTableView()
             setupNavigationBar()
+            
+            users = DB.realm.objects(UserObject.self)
+            token = users.observe { [weak self] changes in
+                guard let table = self?.tableView else { return }
+                switch changes {
+                case .initial:
+                    table.reloadData()
+                case .update(_, let deletions, let insertions, let modifications):
+                    table.performBatchUpdates({
+                        table.deleteRows(at: deletions.map { IndexPath(row: $0, section: 0) }, with: .automatic)
+                        table.insertRows(at: insertions.map { IndexPath(row: $0, section: 0) }, with: .automatic)
+                        table.reloadRows(at: modifications.map { IndexPath(row: $0, section: 0) }, with: .automatic)
+                    })
+                case .error(let error):
+                    print("Realm error: \(error)")
+                }
+            }
+
+
         }
+    deinit {
+        token?.invalidate()
+    }
+
     
         func setupNavigationBar() {
             self.title = "List"
@@ -69,7 +95,6 @@ class UserListVC: UIViewController {
             tableView.delegate = self
             tableView.dataSource = self
             tableView.tableFooterView = UIView()
-            tableView.backgroundColor = UIColor(named: "Background")
             tableView.separatorStyle = .none
         }
     }
@@ -77,7 +102,7 @@ class UserListVC: UIViewController {
   
     extension UserListVC: UITableViewDelegate, UITableViewDataSource {
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return UserStorage.shared.users.count
+            users?.count ?? 0
         }
 
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -90,18 +115,10 @@ class UserListVC: UIViewController {
         }
         
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            let profileVC = ProfileVC(nibName: "ProfileVC", bundle: nil)
-            let user = UserStorage.shared.users[indexPath.row]
-            profileVC.user = user
-            profileVC.editingIndex = indexPath.row
-            profileVC.onDelete = { [weak self] in
-                    self?.users.remove(at: indexPath.row)
-                    self?.tableView.deleteRows(at: [indexPath], with: .automatic)
-                }
-            self.navigationController?.pushViewController(profileVC, animated: true)
-        }
-
-
-    }
+                let profileVC = ProfileVC(nibName: "ProfileVC", bundle: nil)
+                profileVC.user = users[indexPath.row]
+                navigationController?.pushViewController(profileVC, animated: true)
+            }
+}
 
 

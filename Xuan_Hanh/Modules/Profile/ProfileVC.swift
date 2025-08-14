@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ProfileVC: UIViewController {
     
@@ -18,9 +19,7 @@ class ProfileVC: UIViewController {
     @IBOutlet weak var genderLabel: UILabel!
     private var deleteButton: UIButton?
     
-    var editingIndex: Int?
-    var user: User?
-    var onDelete: (() -> Void)?
+    var user: UserObject!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,13 +95,18 @@ class ProfileVC: UIViewController {
     @objc func confirmDelete() {
         dismissAlert()
         
-        if let user = self.user {
-               UserStorage.shared.remove(user: user)
-           }
-        onDelete?()
-        navigationController?.popViewController(animated: true)
-    }
-}
+        guard let u = self.user else { return }
+
+                // Xoá object khỏi Realm
+                DB.write { r in
+                    if !u.isInvalidated { r.delete(u) }
+                }
+
+                navigationController?.popViewController(animated: true)
+            }
+        }
+
+
 
 extension ProfileVC: ButtonDelegate {
     func buttonTapped() {
@@ -111,7 +115,7 @@ extension ProfileVC: ButtonDelegate {
             
             InforVC.user = self.user
             InforVC.isEditMode = true
-            InforVC.editingIndex = self.editingIndex
+            
             navigationController?.pushViewController(InforVC, animated: true)
         }
     }

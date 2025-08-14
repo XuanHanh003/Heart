@@ -6,14 +6,7 @@
 //
 
 import UIKit
-
-struct User {
-    let firstName: String
-    let lastName: String
-    let gender: String
-    let height: Int
-    let weight: Int
-}
+import RealmSwift
 
 class InformationVC: UIViewController {
     
@@ -25,8 +18,7 @@ class InformationVC: UIViewController {
     @IBOutlet weak var formGender: UISegmentedControl!
     
     var isEditMode = false
-    var editingIndex: Int?
-    var user: User?
+    var user: UserObject?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,43 +111,52 @@ class InformationVC: UIViewController {
         dismiss(animated: true)
     }
 }
+
+
 extension InformationVC: ButtonDelegate {
-    
     func buttonTapped() {
         let firstName = formFirstName.textField.text ?? ""
-        let lastName = formLastName.textField.text ?? ""
-        
-        let selectedIndex = formGender.selectedSegmentIndex
-        let gender = formGender.titleForSegment(at: selectedIndex) ?? "Unknown"
-        
-        let height = Int(formHeight.textField.text ?? "0") ?? 0
-        let weight = Int(formWeight.textField.text ?? "0") ?? 0
-        
-        let newUser = User(firstName: firstName, lastName: lastName, gender: gender, height: height, weight: weight)
-        
-        if isEditMode, let index = editingIndex {
-            // UPDATE user cũ
-            UserStorage.shared.users[index] = newUser
-            
-            // Quay lại list cũ: nếu có trong nav stack → pop, nếu đang present → dismiss
+        let lastName  = formLastName.textField.text ?? ""
+        let gender    = formGender.titleForSegment(at: formGender.selectedSegmentIndex) ?? "Unknown"
+        let height    = Int(formHeight.textField.text ?? "0") ?? 0
+        let weight    = Int(formWeight.textField.text ?? "0") ?? 0
+
+        if isEditMode, let obj = user {
+            // UPDATE object Realm hiện có
+            DB.write { _ in
+                obj.firstName = firstName
+                obj.lastName  = lastName
+                obj.gender    = gender
+                obj.height    = height
+                obj.weight    = weight
+            }
+
+            // Quay lại List: nếu đang trong nav stack → pop; nếu đang present → dismiss
             if let listVC = navigationController?.viewControllers.first(where: { $0 is UserListVC }) {
                 navigationController?.popToViewController(listVC, animated: true)
             } else {
                 dismiss(animated: true)
             }
+
         } else {
-            // CREATE user mới
-            UserStorage.shared.users.append(newUser)
-            
-            // Nếu màn này được mở bằng present từ UserList → dismiss để quay lại list (list sẽ reload ở viewWillAppear)
-            // Nếu mở lần đầu bằng push từ Intro → push sang UserList
+            // CREATE object mới trong Realm
+            let obj = UserObject()
+            obj.firstName = firstName
+            obj.lastName  = lastName
+            obj.gender    = gender
+            obj.height    = height
+            obj.weight    = weight
+           
+
+            DB.write { $0.add(obj) }
+
+            // Nếu mở bằng present từ UserList → dismiss; nếu push lần đầu từ Intro → push sang List
             if presentingViewController != nil || navigationController?.presentingViewController != nil {
                 dismiss(animated: true)
             } else {
-                let userListVC = UserListVC(nibName: "UserListVC", bundle: nil)
-                navigationController?.pushViewController(userListVC, animated: true)
+                let list = UserListVC(nibName: "UserListVC", bundle: nil)
+                navigationController?.pushViewController(list, animated: true)
             }
         }
     }
 }
-
