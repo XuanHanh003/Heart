@@ -96,6 +96,7 @@ class UserListVC: UIViewController {
             tableView.dataSource = self
             tableView.tableFooterView = UIView()
             tableView.separatorStyle = .none
+            tableView.backgroundColor = .background
         }
     }
 
